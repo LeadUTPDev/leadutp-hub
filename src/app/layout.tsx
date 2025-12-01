@@ -19,9 +19,36 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "LeadUTP",
-  description: "",
+  title: "LEAD UTP – Comunidad Tecnológica Estudiantil",
+  description:
+    "LEAD UTP es una comunidad estudiantil de la UTP enfocada en el desarrollo profesional en tecnología. Impulsamos a estudiantes a ingresar a big tech mediante mentorías, networking, proyectos y formación práctica. 🚀💡",
+  keywords: [
+    "LEAD UTP",
+    "UTP",
+    "comunidad estudiantil UTP",
+    "tecnología",
+    "big tech",
+    "programación",
+    "mentorías",
+    "universidad tecnológica del perú",
+    "estudiantes de tecnología",
+    "desarrollo profesional",
+  ],
+  authors: [{ name: "LEAD UTP" }],
+  openGraph: {
+    title: "LEAD UTP – Comunidad Tecnológica Estudiantil",
+    description:
+      "Formamos líderes en tecnología a través de mentorías, networking, proyectos y conexión con la industria.",
+    url: "https://lead.com",
+    siteName: "LEAD UTP",
+    locale: "es_PE",
+    type: "website",
+  },
+  icons: {
+    icon: "/lead.svg",
+  },
 };
+
 
 export default function RootLayout({
   children,
@@ -29,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       >

@@ -1,11 +1,21 @@
 @import "tailwindcss";
 
 :root {
+  --primary: #020C3E;
+  --secondary: #D93340;
+  --berry: #A6249D;
+  --carmesí: #CB2F4A;
+  --lavanda-vibrante: #7856EE;
   --background: #020c3e;
   --foreground: #ffffff;
 }
 
 @theme inline {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-berry: var(--berry);
+  --color-carmesi: var(--carmesí);
+  --color-lavanda-vibrante: var(--lavanda-vibrante);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);

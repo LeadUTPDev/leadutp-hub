@@ -51,7 +51,7 @@ export default function Home() {
       {/* CTA */}
       <div>
         <span className="inline-block bg-white text-primary font-semibold px-6 py-2 rounded-full shadow-lg hover:bg-gray-100 transition">
-          #CodeTheFuture
+          WorkSpace • Development
         </span>
       </div>
     </div>

@@ -41,11 +41,8 @@ export default function Home() {
       </p>
 
       <p className="text-lg sm:text-xl md:text-2xl font-medium max-w-xl mb-6 text-gray-200">
-        Prepárate para explorar un espacio lleno de{" "}
-        <span className="text-red-700/90 font-bold">
-          tecnología, innovación y liderazgo
-        </span>
-        , creado por estudiantes para estudiantes.
+        Despierten, arquitectos del caos y guardianes del commit perfecto.
+        El código nos necesita.
       </p>
 
       {/* CTA */}

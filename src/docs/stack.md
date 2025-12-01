@@ -1,7 +1,7 @@
 # Stack del Proyecto
 
 ## Tecnologías principales
-- [Next.js 15](https://nextjs.org/) con App Router
+- [Next.js 16](https://nextjs.org/) con App Router
 - React 19
 - TailwindCSS v4 para estilos
 - TypeScript

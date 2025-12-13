@@ -1,10 +1,6 @@
 # 🚀 LEAD UTP - Sitio Web Oficial
 
 <p align="center">
-  <img src="public/images/logos/lead-utp-logo-default.png" alt="LEAD UTP Logo" width="200"/>
-</p>
-
-<p align="center">
   <strong>Learn. Explore. Aspire. Discover.</strong>
 </p>
 

@@ -61,6 +61,8 @@ const alianzasData = [
   { id: 3, name: 'Aeditip', logo: '/images/alianzas/logo-aeditip.png' },
   { id: 4, name: 'Levo Learning', logo: '/images/alianzas/logo-levo-learning.png' },
   { id: 5, name: 'CV Matcher', logo: '/images/alianzas/logo-cv-matcher.png' },
+  { id: 6, name: 'IBM Z', logo: '/images/alianzas/logo-ibm-z.png' },
+  { id: 7, name: 'Face to Face', logo: '/images/alianzas/logo-face-to-face.png' }
 ];
 
 const Home = () => {
@@ -124,12 +126,21 @@ const Home = () => {
           <p className="alianzas-subtitle">
             Impulsamos el futuro con el apoyo de líderes en tecnología y educación
           </p>
-          <div className="alianzas-logos">
-            {alianzasData.map((alianza) => (
-              <div key={alianza.id} className="alianza-item">
-                <img src={alianza.logo} alt={alianza.name} />
-              </div>
-            ))}
+          <div className="alianzas-marquee">
+            <div className="alianzas-track">
+              {/* Primera copia de logos */}
+              {alianzasData.map((alianza) => (
+                <div key={alianza.id} className="alianza-item">
+                  <img src={alianza.logo} alt={alianza.name} />
+                </div>
+              ))}
+              {/* Segunda copia para efecto infinito */}
+              {alianzasData.map((alianza) => (
+                <div key={`dup-${alianza.id}`} className="alianza-item">
+                  <img src={alianza.logo} alt={alianza.name} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

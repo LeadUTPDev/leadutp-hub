@@ -36,7 +36,7 @@ const Header = () => {
           <Link to="/projects" className="nav-link" onClick={closeMenu}>Proyectos</Link>
           <Link to="/events" className="nav-link" onClick={closeMenu}>Eventos</Link>
           <div className="nav-cta">
-            <button className="btn-contact">Contáctanos</button>
+            <a href="https://linktr.ee/leadutp" target="_blank" rel="noopener noreferrer" className="btn-contact">Contáctanos</a>
           </div>
         </nav>
       </div>

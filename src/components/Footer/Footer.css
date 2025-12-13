@@ -183,10 +183,14 @@
   .footer-nav {
     flex-direction: column;
     gap: 32px;
+    width: 100%;
   }
 
   .footer-nav-column {
     min-width: auto;
+    align-items: center;
+    text-align: center;
+    width: 100%;
   }
 
   .footer-nav-title {

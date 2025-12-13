@@ -16,8 +16,8 @@ const pilaresFilter = [
 const projectsData = [
   {
     id: 1,
-    title: 'TechTalks UTP',
-    description: 'Serie de conferencias con expertos de la industria tecnológica para compartir conocimientos y experiencias.',
+    title: 'LATAM ready for Hackatons',
+    description: 'Bootcamp intensivo de 5 meses con mentores de empresas líderes.',
     pilar: 'excelencia-academica',
     image: '/images/pilares/excelencia-academica-card.png',
     gradientFrom: '#b74515',
@@ -25,7 +25,7 @@ const projectsData = [
   },
   {
     id: 2,
-    title: 'Women in Tech',
+    title: 'TEMPORAL',
     description: 'Programa de mentoría y networking para mujeres en carreras STEM.',
     pilar: 'excelencia-femenina',
     image: '/images/pilares/excelencia-femenina-card.png',
@@ -34,8 +34,8 @@ const projectsData = [
   },
   {
     id: 3,
-    title: 'Leadership Workshop',
-    description: 'Talleres prácticos para desarrollar habilidades de liderazgo efectivo.',
+    title: 'Torneo de Debate "DeepTech & IA"',
+    description: 'Debate tecnológico entre los diferentes capítulos de LEAD.',
     pilar: 'liderazgo',
     image: '/images/pilares/liderazgo-card.png',
     gradientFrom: '#7856ee',
@@ -43,8 +43,8 @@ const projectsData = [
   },
   {
     id: 4,
-    title: 'Code Camp',
-    description: 'Bootcamp intensivo de programación para estudiantes de colegios.',
+    title: 'Pequeños Einstein en "Ciudad de los Niños"',
+    description: 'Bootcamp intensivo de programación e IA para estudiantes escolares',
     pilar: 'lead-academia',
     image: '/images/pilares/lead-academia-card.png',
     gradientFrom: '#c90fcf',
@@ -52,7 +52,7 @@ const projectsData = [
   },
   {
     id: 5,
-    title: 'Soft Skills Academy',
+    title: 'TEMPORAL',
     description: 'Programa de desarrollo de habilidades blandas demandadas por empresas.',
     pilar: 'desarrollo-profesional',
     image: '/images/pilares/desarrollo-profesional-card.png',
@@ -61,7 +61,7 @@ const projectsData = [
   },
   {
     id: 6,
-    title: 'Team Building Events',
+    title: 'TTEMPORAL',
     description: 'Actividades de integración para fortalecer el trabajo en equipo.',
     pilar: 'desarrollo-capitulo',
     image: '/images/pilares/desarrollo-capitulo-card.png',
@@ -70,7 +70,7 @@ const projectsData = [
   },
   {
     id: 7,
-    title: 'Hackathon LEAD',
+    title: 'TEMPORAL',
     description: 'Competencia de desarrollo de soluciones tecnológicas en 48 horas con mentores de empresas líderes.',
     pilar: 'excelencia-academica',
     image: '/images/pilares/excelencia-academica-card.png',
@@ -79,7 +79,7 @@ const projectsData = [
   },
   {
     id: 8,
-    title: 'Mentoras Tech',
+    title: 'TEMPORAL',
     description: 'Programa de acompañamiento para estudiantes mujeres con profesionales destacadas del sector.',
     pilar: 'excelencia-femenina',
     image: '/images/pilares/excelencia-femenina-card.png',
@@ -88,7 +88,7 @@ const projectsData = [
   },
   {
     id: 9,
-    title: 'Speakers Night',
+    title: 'TEMPORAL',
     description: 'Noches de charlas inspiracionales con líderes de la industria y emprendedores exitosos.',
     pilar: 'liderazgo',
     image: '/images/pilares/liderazgo-card.png',
@@ -97,7 +97,7 @@ const projectsData = [
   },
   {
     id: 10,
-    title: 'LEAD Kids',
+    title: 'TEMPORAL',
     description: 'Talleres de robótica y programación básica para niños de 8 a 12 años.',
     pilar: 'lead-academia',
     image: '/images/pilares/lead-academia-card.png',
@@ -106,7 +106,7 @@ const projectsData = [
   },
   {
     id: 11,
-    title: 'CV Workshop',
+    title: 'TEMPORAL',
     description: 'Sesiones prácticas para crear CVs profesionales y preparación para entrevistas laborales.',
     pilar: 'desarrollo-profesional',
     image: '/images/pilares/desarrollo-profesional-card.png',
@@ -115,7 +115,7 @@ const projectsData = [
   },
   {
     id: 12,
-    title: 'LEAD Networking',
+    title: 'TEMPORAL',
     description: 'Eventos de networking con empresas y startups para conectar talento con oportunidades.',
     pilar: 'desarrollo-capitulo',
     image: '/images/pilares/desarrollo-capitulo-card.png',
@@ -124,8 +124,8 @@ const projectsData = [
   },
   {
     id: 13,
-    title: 'Data Science Bootcamp',
-    description: 'Programa intensivo de análisis de datos con Python y herramientas de Machine Learning.',
+    title: 'Introduccion a MicroPython para Machine Learning',
+    description: 'Programa intensivo de 2 días para aprender MicroPython aplicado a ML.',
     pilar: 'excelencia-academica',
     image: '/images/pilares/excelencia-academica-card.png',
     gradientFrom: '#b74515',
@@ -133,7 +133,7 @@ const projectsData = [
   },
   {
     id: 14,
-    title: 'Tech Girls Summit',
+    title: 'TEMPORAL',
     description: 'Cumbre anual que celebra los logros de mujeres en tecnología e inspira a las nuevas generaciones.',
     pilar: 'excelencia-femenina',
     image: '/images/pilares/excelencia-femenina-card.png',
@@ -142,7 +142,7 @@ const projectsData = [
   },
   {
     id: 15,
-    title: 'Public Speaking Lab',
+    title: 'TEMPORAL',
     description: 'Laboratorio para desarrollar habilidades de comunicación efectiva y presentaciones impactantes.',
     pilar: 'liderazgo',
     image: '/images/pilares/liderazgo-card.png',
@@ -151,7 +151,7 @@ const projectsData = [
   },
   {
     id: 16,
-    title: 'LEAD Teens',
+    title: 'TEMPORAL',
     description: 'Programa de introducción a la programación para adolescentes de secundaria.',
     pilar: 'lead-academia',
     image: '/images/pilares/lead-academia-card.png',
@@ -160,7 +160,7 @@ const projectsData = [
   },
   {
     id: 17,
-    title: 'LinkedIn Masterclass',
+    title: 'TEMPORAL',
     description: 'Taller para optimizar perfiles de LinkedIn y estrategias de marca personal.',
     pilar: 'desarrollo-profesional',
     image: '/images/pilares/desarrollo-profesional-card.png',
@@ -169,7 +169,7 @@ const projectsData = [
   },
   {
     id: 18,
-    title: 'LEAD Fest',
+    title: 'TEMPORAL',
     description: 'Festival anual de tecnología con competencias, stands y actividades para toda la comunidad.',
     pilar: 'desarrollo-capitulo',
     image: '/images/pilares/desarrollo-capitulo-card.png',

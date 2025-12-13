@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 // Data de los pilares
@@ -63,6 +64,7 @@ const alianzasData = [
 ];
 
 const Home = () => {
+  const navigate = useNavigate();
   const carouselRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -106,7 +108,7 @@ const Home = () => {
               </p>
             </div>
             <div className="hero-buttons">
-              <button className="btn-primary">Descubre proyectos</button>
+              <button className="btn-primary" onClick={() => navigate('/projects')}>Descubre proyectos</button>
             </div>
           </div>
           <div className="hero-image">

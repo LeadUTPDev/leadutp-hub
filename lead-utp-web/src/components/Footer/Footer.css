@@ -1,0 +1,214 @@
+/* ============================================
+   Footer Styles - Based on Figma Design
+   ============================================ */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 80px;
+  background: rgba(2, 5, 15, 0.5);
+}
+
+.footer-container {
+  max-width: var(--max-width);
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 48px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-brand {
+  flex: 0 0 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.footer-logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+}
+
+.footer-tagline {
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.45;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.footer-social {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.social-link {
+  width: 32px;
+  height: 32px;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.social-link:hover {
+  background: var(--accent-primary);
+  transform: scale(1.1);
+}
+
+.social-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.footer-nav {
+  flex: 1;
+  display: flex;
+  gap: 64px;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.footer-nav-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  min-width: 120px;
+}
+
+.footer-nav-title {
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.45;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+}
+
+.footer-nav-link {
+  font-size: 14px;
+  font-weight: var(--font-weight-normal);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  cursor: default;
+  transition: color var(--transition-fast);
+}
+
+.footer-nav-link:hover {
+  color: var(--text-primary);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 48px 32px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 48px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-brand {
+    align-items: center;
+    flex: none;
+  }
+
+  .footer-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 48px;
+  }
+
+  .footer-nav-column {
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 20px;
+  }
+
+  .footer-content {
+    padding: 32px 0;
+    gap: 40px;
+  }
+
+  .footer-logo {
+    width: 140px;
+  }
+
+  .footer-tagline {
+    font-size: 12px;
+  }
+
+  .footer-social {
+    gap: 12px;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer-nav-column {
+    min-width: auto;
+  }
+
+  .footer-nav-title {
+    font-size: 13px;
+  }
+
+  .footer-nav-link {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 32px 16px;
+  }
+
+  .footer-logo {
+    width: 120px;
+  }
+
+  .footer-tagline {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+}

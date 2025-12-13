@@ -172,5 +172,5 @@ Este proyecto es propiedad de LEAD UTP - Universidad Tecnológica del Perú.
 ---
 
 <p align="center">
-  Hecho con ❤️ por el equipo de LEAD UTP
+  Hecho con ❤️ por el equipo de LEAD UTP - 2025
 </p>

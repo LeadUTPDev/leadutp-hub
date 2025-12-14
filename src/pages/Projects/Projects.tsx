@@ -7,170 +7,197 @@ const pilaresFilter = [
   { id: 'desarrollo-profesional', name: 'Desarrollo Profesional', color: '#d93340' },
   { id: 'liderazgo', name: 'Liderazgo', color: '#7856ee' },
   { id: 'excelencia-femenina', name: 'Excelencia Femenina', color: '#a6249d' },
-  { id: 'desarrollo-capitulo', name: 'Desarrollo del Capítulo', color: '#0024d7' },
+  { id: 'desarrollo-capitulo', name: 'Desarrollo de Capítulo', color: '#0024d7' },
   { id: 'excelencia-academica', name: 'Excelencia Académica', color: '#b74515' },
   { id: 'lead-academia', name: 'LEAD Academia', color: '#c90fcf' },
 ];
 
-// Data de proyectos (ejemplo)
+// Data de proyectos
 const projectsData = [
   {
     id: 1,
-    title: 'LATAM ready for Hackatons',
-    description: 'Bootcamp intensivo de 5 meses con mentores de empresas líderes.',
-    pilar: 'excelencia-academica',
-    image: '/images/pilares/excelencia-academica-card.png',
-    gradientFrom: '#b74515',
-    gradientTo: '#322100'
+    title: 'Día de Integración de LEAD UTP en GLOBANT',
+    description: 'Tarde que permitió conectar, compartir experiencias y fortalecer el liderazgo entre los miembros de la comunidad.',
+    pilar: 'desarrollo-capitulo',
+    image: '/images/pilares/desarrollo-capitulo-card.png',
+    gradientFrom: '#0024d7',
+    gradientTo: '#010726'
   },
   {
     id: 2,
-    title: 'TEMPORAL',
-    description: 'Programa de mentoría y networking para mujeres en carreras STEM.',
-    pilar: 'excelencia-femenina',
-    image: '/images/pilares/excelencia-femenina-card.png',
-    gradientFrom: '#a6249d',
-    gradientTo: '#370033'
+    title: 'Cómo convertir tu MVP en una startup financiada',
+    description: 'Charla que explicó cómo transformar un MVP en una empresa de alto impacto y con financiamiento.',
+    pilar: 'excelencia-academica',
+    image: '/images/pilares/excelencia-academica-card.png',
+    gradientFrom: '#b74515',
+    gradientTo: '#322100'
   },
   {
     id: 3,
-    title: 'Torneo de Debate "DeepTech & IA"',
-    description: 'Debate tecnológico entre los diferentes capítulos de LEAD.',
-    pilar: 'liderazgo',
-    image: '/images/pilares/liderazgo-card.png',
-    gradientFrom: '#7856ee',
-    gradientTo: '#0b0033'
+    title: 'First Gen Day Perú',
+    description: 'Evento que conmemoró a la primera generación universitaria, resaltando su esfuerzo y trayectoria académica.',
+    pilar: 'desarrollo-capitulo',
+    image: '/images/pilares/desarrollo-capitulo-card.png',
+    gradientFrom: '#0024d7',
+    gradientTo: '#010726'
   },
   {
     id: 4,
-    title: 'Pequeños Einstein en "Ciudad de los Niños"',
-    description: 'Bootcamp intensivo de programación e IA para estudiantes escolares',
-    pilar: 'lead-academia',
-    image: '/images/pilares/lead-academia-card.png',
-    gradientFrom: '#c90fcf',
-    gradientTo: '#410043'
+    title: 'Charla de n8n',
+    description: 'Sesión informativa que mostró cómo n8n está revolucionando la automatización de procesos empresariales.',
+    pilar: 'excelencia-academica',
+    image: '/images/pilares/excelencia-academica-card.png',
+    gradientFrom: '#b74515',
+    gradientTo: '#322100'
   },
   {
     id: 5,
-    title: 'TEMPORAL',
-    description: 'Programa de desarrollo de habilidades blandas demandadas por empresas.',
-    pilar: 'desarrollo-profesional',
-    image: '/images/pilares/desarrollo-profesional-card.png',
-    gradientFrom: '#d93340',
-    gradientTo: '#5a040b'
+    title: 'Conecta con el Futuro – SJL',
+    description: 'Evento de presentación de LEAD UTP realizado en el campus San Juan de Lurigancho.',
+    pilar: 'lead-academia',
+    image: '/images/pilares/lead-academia-card.png',
+    gradientFrom: '#c90fcf',
+    gradientTo: '#410043'
   },
   {
     id: 6,
-    title: 'TTEMPORAL',
-    description: 'Actividades de integración para fortalecer el trabajo en equipo.',
-    pilar: 'desarrollo-capitulo',
-    image: '/images/pilares/desarrollo-capitulo-card.png',
-    gradientFrom: '#0024d7',
-    gradientTo: '#010726'
+    title: 'Torneo de Debate "DeepTech & IA"',
+    description: 'Espacio de debate tecnológico que reunió a los distintos capítulos de LEAD para intercambiar ideas y perspectivas.',
+    pilar: 'liderazgo',
+    image: '/images/pilares/liderazgo-card.png',
+    gradientFrom: '#7856ee',
+    gradientTo: '#0b0033'
   },
   {
     id: 7,
-    title: 'TEMPORAL',
-    description: 'Competencia de desarrollo de soluciones tecnológicas en 48 horas con mentores de empresas líderes.',
-    pilar: 'excelencia-academica',
-    image: '/images/pilares/excelencia-academica-card.png',
-    gradientFrom: '#b74515',
-    gradientTo: '#322100'
-  },
-  {
-    id: 8,
-    title: 'TEMPORAL',
-    description: 'Programa de acompañamiento para estudiantes mujeres con profesionales destacadas del sector.',
-    pilar: 'excelencia-femenina',
-    image: '/images/pilares/excelencia-femenina-card.png',
-    gradientFrom: '#a6249d',
-    gradientTo: '#370033'
-  },
-  {
-    id: 9,
-    title: 'TEMPORAL',
-    description: 'Noches de charlas inspiracionales con líderes de la industria y emprendedores exitosos.',
-    pilar: 'liderazgo',
-    image: '/images/pilares/liderazgo-card.png',
-    gradientFrom: '#7856ee',
-    gradientTo: '#0b0033'
-  },
-  {
-    id: 10,
-    title: 'TEMPORAL',
-    description: 'Talleres de robótica y programación básica para niños de 8 a 12 años.',
+    title: 'Teacher\'s AI',
+    description: 'Capacitación dirigida a docentes escolares que fortaleció el uso de inteligencia artificial en la creación de sesiones de aprendizaje.',
     pilar: 'lead-academia',
     image: '/images/pilares/lead-academia-card.png',
     gradientFrom: '#c90fcf',
     gradientTo: '#410043'
   },
   {
-    id: 11,
-    title: 'TEMPORAL',
-    description: 'Sesiones prácticas para crear CVs profesionales y preparación para entrevistas laborales.',
+    id: 8,
+    title: 'Introducción a MicroPython para Machine Learning',
+    description: 'Programa intensivo de dos días que permitió aprender MicroPython aplicado a soluciones de machine learning.',
+    pilar: 'excelencia-academica',
+    image: '/images/pilares/excelencia-academica-card.png',
+    gradientFrom: '#b74515',
+    gradientTo: '#322100'
+  },
+  {
+    id: 9,
+    title: 'Career Path',
+    description: 'Programa de mentorías personalizadas que fortaleció la empleabilidad y el desarrollo profesional de los participantes.',
     pilar: 'desarrollo-profesional',
     image: '/images/pilares/desarrollo-profesional-card.png',
     gradientFrom: '#d93340',
     gradientTo: '#5a040b'
   },
   {
-    id: 12,
-    title: 'TEMPORAL',
-    description: 'Eventos de networking con empresas y startups para conectar talento con oportunidades.',
+    id: 10,
+    title: 'Data & IA Innovation Summit',
+    description: 'Evento que promovió la transformación del mundo a través de la innovación y la inteligencia artificial junto a líderes tecnológicos.',
     pilar: 'desarrollo-capitulo',
     image: '/images/pilares/desarrollo-capitulo-card.png',
     gradientFrom: '#0024d7',
     gradientTo: '#010726'
   },
   {
-    id: 13,
-    title: 'Introduccion a MicroPython para Machine Learning',
-    description: 'Programa intensivo de 2 días para aprender MicroPython aplicado a ML.',
-    pilar: 'excelencia-academica',
-    image: '/images/pilares/excelencia-academica-card.png',
-    gradientFrom: '#b74515',
-    gradientTo: '#322100'
-  },
-  {
-    id: 14,
-    title: 'TEMPORAL',
-    description: 'Cumbre anual que celebra los logros de mujeres en tecnología e inspira a las nuevas generaciones.',
+    id: 11,
+    title: 'Campamento STEAM "Campeonas"',
+    description: 'Espacio formativo donde las participantes demostraron su talento mediante proyectos inspiradores.',
     pilar: 'excelencia-femenina',
     image: '/images/pilares/excelencia-femenina-card.png',
     gradientFrom: '#a6249d',
     gradientTo: '#370033'
   },
   {
-    id: 15,
-    title: 'TEMPORAL',
-    description: 'Laboratorio para desarrollar habilidades de comunicación efectiva y presentaciones impactantes.',
-    pilar: 'liderazgo',
-    image: '/images/pilares/liderazgo-card.png',
-    gradientFrom: '#7856ee',
-    gradientTo: '#0b0033'
+    id: 12,
+    title: 'Webinar "Becas que transforman"',
+    description: 'Charla en la que becarias compartieron sus experiencias, procesos y oportunidades académicas internacionales.',
+    pilar: 'excelencia-femenina',
+    image: '/images/pilares/excelencia-femenina-card.png',
+    gradientFrom: '#a6249d',
+    gradientTo: '#370033'
   },
   {
-    id: 16,
-    title: 'TEMPORAL',
-    description: 'Programa de introducción a la programación para adolescentes de secundaria.',
+    id: 13,
+    title: 'Presentes en "Discovery Day"',
+    description: 'Experiencia en la que estudiantes de secundaria conectaron con líderes universitarios para descubrir su potencial académico y profesional.',
     pilar: 'lead-academia',
     image: '/images/pilares/lead-academia-card.png',
     gradientFrom: '#c90fcf',
     gradientTo: '#410043'
   },
   {
-    id: 17,
-    title: 'TEMPORAL',
-    description: 'Taller para optimizar perfiles de LinkedIn y estrategias de marca personal.',
+    id: 14,
+    title: 'LATAM Ready for Hackathons',
+    description: 'Bootcamp intensivo de 5 meses que brindó mentoría especializada de empresas líderes de la región.',
+    pilar: 'excelencia-academica',
+    image: '/images/pilares/excelencia-academica-card.png',
+    gradientFrom: '#b74515',
+    gradientTo: '#322100'
+  },
+  {
+    id: 15,
+    title: 'Pequeños Einstein en "Ciudad de los Niños"',
+    description: 'Bootcamp intensivo que introdujo a estudiantes escolares en programación e inteligencia artificial.',
+    pilar: 'lead-academia',
+    image: '/images/pilares/lead-academia-card.png',
+    gradientFrom: '#c90fcf',
+    gradientTo: '#410043'
+  },
+  {
+    id: 16,
+    title: 'Lidera los datos con empatía',
+    description: 'Sesión que impulsó el desarrollo de perfiles que integran analítica de datos con habilidades humanas.',
     pilar: 'desarrollo-profesional',
     image: '/images/pilares/desarrollo-profesional-card.png',
     gradientFrom: '#d93340',
     gradientTo: '#5a040b'
   },
   {
+    id: 17,
+    title: 'Debate Tecnológico LEAD',
+    description: 'Encuentro que fomentó la argumentación, el pensamiento crítico y el aprendizaje en comunidad.',
+    pilar: 'liderazgo',
+    image: '/images/pilares/liderazgo-card.png',
+    gradientFrom: '#7856ee',
+    gradientTo: '#0b0033'
+  },
+  {
     id: 18,
-    title: 'TEMPORAL',
-    description: 'Festival anual de tecnología con competencias, stands y actividades para toda la comunidad.',
+    title: 'Pasaporte Aprendly',
+    description: 'Evento que orientó a los participantes sobre el acceso a becas, empleos remotos y oportunidades internacionales.',
+    pilar: 'desarrollo-capitulo',
+    image: '/images/pilares/desarrollo-capitulo-card.png',
+    gradientFrom: '#0024d7',
+    gradientTo: '#010726'
+  },
+  {
+    id: 19,
+    title: 'Cómo posicionarte como ingeniero en el mundo digital',
+    description: 'Taller que enseñó a construir un perfil atractivo en LinkedIn y a realizar networking estratégico.',
+    pilar: 'desarrollo-profesional',
+    image: '/images/pilares/desarrollo-profesional-card.png',
+    gradientFrom: '#d93340',
+    gradientTo: '#5a040b'
+  },
+  {
+    id: 20,
+    title: 'Inglés + Tecnología: Impulsa tu futuro',
+    description: 'Curso gratuito que brindó formación en inglés básico con enfoque tecnológico.',
+    pilar: 'desarrollo-capitulo',
+    image: '/images/pilares/desarrollo-capitulo-card.png',
+    gradientFrom: '#0024d7',
+    gradientTo: '#010726'
+  },
+  {
+    id: 21,
+    title: 'Evento de Presentación "LEAD UTP"',
+    description: 'Primer evento oficial de la comunidad que sirvió como espacio para conectar y compartir experiencias.',
     pilar: 'desarrollo-capitulo',
     image: '/images/pilares/desarrollo-capitulo-card.png',
     gradientFrom: '#0024d7',

@@ -4,56 +4,56 @@ import './Events.css';
 const eventsData = [
   {
     id: 1,
-    title: 'TechTalks: IA y el Futuro del Trabajo',
-    date: '15 Dic 2025',
+    title: 'Chocolatada LEAD',
+    date: '19 Dic 2025',
     time: '18:00 - 20:00',
-    location: 'Auditorio UTP - Campus Lima',
-    description: 'Conferencia sobre el impacto de la inteligencia artificial en el mercado laboral.',
+    location: 'Auditorio UTP - Torre Arequipa',
+    description: 'Chocolatada de integración.',
     pilar: 'Excelencia Académica',
     pilarColor: '#b74515',
     status: 'upcoming'
   },
   {
     id: 2,
-    title: 'Workshop: Liderazgo Efectivo',
+    title: 'Día de Integración de LEAD UTP en GLOBANT',
     date: '20 Dic 2025',
-    time: '14:00 - 17:00',
-    location: 'Sala de Conferencias B3',
-    description: 'Taller práctico para desarrollar habilidades de liderazgo.',
-    pilar: 'Liderazgo',
+    time: '17:00 - 20:00',
+    location: 'GLOBANT - San Isidro',
+    description: 'Tarde que permitió conectar, compartir experiencias y fortalecer el liderazgo entre los miembros de la comunidad.',
+    pilar: 'Desarrollo de Capitulo',
     pilarColor: '#7856ee',
-    status: 'upcoming'
+    status: 'past'
   },
   {
     id: 3,
-    title: 'Women in Tech Meetup',
-    date: '22 Dic 2025',
-    time: '16:00 - 18:00',
-    location: 'Virtual - Google Meet',
-    description: 'Networking y mentoría para mujeres en tecnología.',
-    pilar: 'Excelencia Femenina',
-    pilarColor: '#a6249d',
-    status: 'upcoming'
+    title: 'Cómo convertir tu MVP en una startup financiada',
+    date: '8 Nov 2025',
+    time: '18:00 - 19:00',
+    location: 'Online - Zoom',
+    description: 'Charla que explicó cómo transformar un MVP en una empresa de alto impacto y con financiamiento.',
+    pilar: 'Excelencia Académica',
+    pilarColor: '#7856ee',
+    status: 'past'
   },
   {
     id: 4,
-    title: 'Hackathon LEAD UTP 2025',
-    date: '10 Nov 2025',
-    time: '09:00 - 21:00',
-    location: 'Campus UTP',
-    description: '12 horas de innovación y desarrollo de soluciones tecnológicas.',
-    pilar: 'Desarrollo Profesional',
+    title: 'First Gen Day Perú',
+    date: '8 Nov 2025',
+    time: '15:00 - 19:00',
+    location: 'Auditorio UTP - Torre Arequipa',
+    description: 'Evento que conmemoró a la primera generación universitaria, resaltando su esfuerzo y trayectoria académica.',
+    pilar: 'Desarrollo de Capitulo',
     pilarColor: '#d93340',
     status: 'past'
   },
   {
     id: 5,
-    title: 'Code Camp para Escolares',
-    date: '5 Nov 2025',
-    time: '10:00 - 13:00',
-    location: 'Lab de Cómputo A1',
-    description: 'Introducción a la programación para estudiantes de secundaria.',
-    pilar: 'LEAD Academia',
+    title: 'Charla de n8n',
+    date: '18 Oct 2025',
+    time: '15:00 - 19:00',
+    location: 'Auditorio Central UTP',
+    description: 'Sesión informativa que mostró cómo n8n está revolucionando la automatización de procesos empresariales.',
+    pilar: 'Excelencia Académica',
     pilarColor: '#c90fcf',
     status: 'past'
   },
@@ -78,7 +78,7 @@ const Events = () => {
       </section>
 
       {/* Upcoming Events Section */}
-      <section className="events-section">
+      <section className="events-section events-upcoming">
         <div className="events-section-container">
           <h2 className="events-section-title">Próximos Eventos</h2>
           <div className="events-list">

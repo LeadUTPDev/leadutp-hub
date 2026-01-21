@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
@@ -70,6 +70,26 @@ const Home = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [activeImage, setActiveImage] = useState(0);
+
+  // Array de imágenes para el hero
+  const heroImages = [
+    '/images/Lead1.png',
+    '/images/Lead2.png',
+    '/images/Lead3.png',
+    '/images/Lead4.png',
+    '/images/Lead5.png',
+    '/images/Lead6.png'
+  ];
+
+  // Efecto para rotar imágenes automáticamente cada 5 segundos
+  useEffect(() => {
+    if (!heroImages || heroImages.length === 0) return;
+    const id = setInterval(() => {
+      setActiveImage((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [heroImages.length]);
 
   const checkScrollButtons = () => {
     if (carouselRef.current) {
@@ -113,8 +133,26 @@ const Home = () => {
               <button className="btn-primary" onClick={() => navigate('/projects')}>Descubre proyectos</button>
             </div>
           </div>
-          <div className="hero-image">
-            <img src="/images/hero-team.png" alt="Equipo Lead UTP en Globant" />
+          <div className="hero-image-carousel" role="region" aria-label="Galería de imágenes LEAD UTP">
+            {heroImages.map((src, idx) => (
+              <img
+                key={`hero-${idx}`}
+                src={src}
+                alt={`LEAD UTP ${idx + 1}`}
+                className={`hero-carousel-slide ${idx === activeImage ? 'active' : ''}`}
+                loading={idx === 0 ? 'eager' : 'lazy'}
+              />
+            ))}
+            <div className="hero-carousel-indicators">
+              {heroImages.map((_, idx) => (
+                <button 
+                  key={`indicator-${idx}`} 
+                  className={`hero-carousel-indicator ${idx === activeImage ? 'active' : ''}`}
+                  onClick={() => setActiveImage(idx)}
+                  aria-label={`Ir a imagen ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

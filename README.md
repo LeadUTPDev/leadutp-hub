@@ -82,7 +82,7 @@ Los colores y estilos están basados en el diseño de Figma oficial:
 
 ### Requisitos Previos
 - Node.js 18+ 
-- npm o yarn
+- npm o yarn | pnpm opcional
 
 ### Pasos
 

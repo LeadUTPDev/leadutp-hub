@@ -8,7 +8,7 @@ export const aboutContent: AboutContent = {
   },
 
   mission:
-    "Impulsar el talento de los estudiantes de la UTP a través de programas de liderazgo, desarrollo profesional y excelencia académica, creando oportunidades que transformen sus vidas y contribuyan al progreso de la sociedad.",
+    "Impulsar el talento humano de los estudiantes de la UTP a través de programas de liderazgo, desarrollo profesional y excelencia académica, creando oportunidades que transformen sus vidas y contribuyan al progreso de la sociedad.",
 
   vision:
     "Ser la comunidad universitaria líder en el desarrollo integral de profesionales capaces de generar impacto positivo en la industria tecnológica y en la sociedad peruana."

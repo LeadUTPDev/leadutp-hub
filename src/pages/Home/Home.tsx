@@ -2,151 +2,117 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
-// Data de los pilares
-const pilaresData = [
-  {
-    id: 1,
-    title: 'Desarrollo Profesional',
-    description: 'Impulsamos las habilidades blandas necesarias que las mejores empresas demandan.',
-    image: '/images/pilares/desarrollo-profesional-card.png',
-    gradientFrom: '#d93340',
-    gradientTo: '#5a040b'
-  },
-  {
-    id: 2,
-    title: 'Liderazgo',
-    description: 'Creamos oportunidades para pulir habilidades de liderazgo en los estudiantes.',
-    image: '/images/pilares/liderazgo-card.png',
-    gradientFrom: '#7856ee',
-    gradientTo: '#0b0033'
-  },
-  {
-    id: 3,
-    title: 'Excelencia Femenina',
-    description: 'Empoderamos a mujeres líderes en la industria STEM para cerrar la brecha de género.',
-    image: '/images/pilares/excelencia-femenina-card.png',
-    gradientFrom: '#a6249d',
-    gradientTo: '#370033'
-  },
-  {
-    id: 4,
-    title: 'Desarrollo del Capítulo',
-    description: 'Desarrollamos actividades y mejoras en el desempeño de nuestros voluntarios.',
-    image: '/images/pilares/desarrollo-capitulo-card.png',
-    gradientFrom: '#0024d7',
-    gradientTo: '#010726'
-  },
-  {
-    id: 5,
-    title: 'Excelencia Académica',
-    description: 'Generamos oportunidades de aprendizaje continuo de STEM para todos.',
-    image: '/images/pilares/excelencia-academica-card.png',
-    gradientFrom: '#b74515',
-    gradientTo: '#322100'
-  },
-  {
-    id: 6,
-    title: 'LEAD Academia',
-    description: 'Difundimos conocimiento y pasión por la tecnología con los jóvenes de colegio.',
-    image: '/images/pilares/lead-academia-card.png',
-    gradientFrom: '#c90fcf',
-    gradientTo: '#410043'
-  }
-];
+import {
+  heroContent,
+  heroImages,
+  alianzasData,
+  alianzasSectionContent,
+  pilaresData,
+  pilaresSectionContent,
+} from './Homedata';
 
-// Data de las alianzas
-const alianzasData = [
-  { id: 1, name: 'DSC UTP', logo: '/images/alianzas/logo-dsc-utp.png' },
-  { id: 2, name: 'CONEII', logo: '/images/alianzas/logo-coneii.png' },
-  { id: 3, name: 'Aeditip', logo: '/images/alianzas/logo-aeditip.png' },
-  { id: 4, name: 'Levo Learning', logo: '/images/alianzas/logo-levo-learning.png' },
-  { id: 5, name: 'CV Matcher', logo: '/images/alianzas/logo-cv-matcher.png' },
-  { id: 6, name: 'IBM Z', logo: '/images/alianzas/logo-ibm-z.png' },
-  { id: 7, name: 'Face to Face', logo: '/images/alianzas/logo-face-to-face.png' }
-];
+const CAROUSEL_SCROLL_AMOUNT = 376; // card width + gap
+const HERO_INTERVAL_MS       = 5000;
 
 const Home = () => {
   const navigate = useNavigate();
   const carouselRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
+
+  const [canScrollLeft,  setCanScrollLeft]  = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const [activeImage, setActiveImage] = useState(0);
+  const [activeImage,    setActiveImage]    = useState(0);
 
-  // Array de imágenes para el hero
-  const heroImages = [
-    '/images/Lead1.png',
-    '/images/Lead2.png',
-    '/images/Lead3.png',
-    '/images/Lead4.png',
-    '/images/Lead5.png',
-    '/images/Lead6.png'
-  ];
-
-  // Efecto para rotar imágenes automáticamente cada 5 segundos
+  // ── Auto-rotate hero carousel ─────────────────
   useEffect(() => {
-    if (!heroImages || heroImages.length === 0) return;
     const id = setInterval(() => {
       setActiveImage((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
+    }, HERO_INTERVAL_MS);
     return () => clearInterval(id);
-  }, [heroImages.length]);
+  }, []);
 
+  // ── Scroll Reveal (IntersectionObserver) ──────
+  useEffect(() => {
+    const targets = document.querySelectorAll<HTMLElement>(
+      '.sr, .sr-left, .sr-right, .sr-scale'
+    );
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('sr-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    targets.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  // ── Pilares carousel helpers ──────────────────
   const checkScrollButtons = () => {
-    if (carouselRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-    }
+    if (!carouselRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+    setCanScrollLeft(scrollLeft > 0);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
   };
 
   const scrollCarousel = (direction: 'left' | 'right') => {
-    if (carouselRef.current) {
-      const scrollAmount = 376; // card width + gap
-      const newScrollLeft = direction === 'left' 
-        ? carouselRef.current.scrollLeft - scrollAmount
-        : carouselRef.current.scrollLeft + scrollAmount;
-      
-      carouselRef.current.scrollTo({
-        left: newScrollLeft,
-        behavior: 'smooth'
-      });
-      
-      setTimeout(checkScrollButtons, 300);
-    }
+    if (!carouselRef.current) return;
+    carouselRef.current.scrollTo({
+      left: carouselRef.current.scrollLeft +
+            (direction === 'left' ? -CAROUSEL_SCROLL_AMOUNT : CAROUSEL_SCROLL_AMOUNT),
+      behavior: 'smooth',
+    });
+    setTimeout(checkScrollButtons, 300);
   };
 
   return (
     <main className="home">
-      {/* Hero Section */}
+
+      {/* ── Hero ──────────────────────────────── */}
       <section className="hero">
         <div className="hero-container">
+
           <div className="hero-content">
             <div className="hero-text">
               <h1 className="hero-title">
-                Donde los sueños <span className="hero-title-accent">se cumplen</span>
+                {heroContent.title}{' '}
+                <span className="hero-title-accent">{heroContent.titleAccent}</span>
               </h1>
-              <p className="hero-subtitle">
-                La comunidad que impulsa el talento humano para construir un mejor mañana.
-              </p>
+              <p className="hero-subtitle">{heroContent.subtitle}</p>
             </div>
             <div className="hero-buttons">
-              <button className="btn-primary" onClick={() => navigate('/projects')}>Descubre proyectos</button>
+              <button
+                className="btn-primary"
+                onClick={() => navigate(heroContent.ctaPath)}
+              >
+                {heroContent.ctaLabel}
+              </button>
             </div>
           </div>
-          <div className="hero-image-carousel" role="region" aria-label="Galería de imágenes LEAD UTP">
-            {heroImages.map((src, idx) => (
+
+          <div
+            className="hero-image-carousel"
+            role="region"
+            aria-label="Galería de imágenes LEAD UTP"
+          >
+            {heroImages.map((img, idx) => (
               <img
-                key={`hero-${idx}`}
-                src={src}
-                alt={`LEAD UTP ${idx + 1}`}
+                key={img.id}
+                src={img.src}
+                alt={img.alt}
                 className={`hero-carousel-slide ${idx === activeImage ? 'active' : ''}`}
                 loading={idx === 0 ? 'eager' : 'lazy'}
               />
             ))}
             <div className="hero-carousel-indicators">
-              {heroImages.map((_, idx) => (
-                <button 
-                  key={`indicator-${idx}`} 
+              {heroImages.map((img, idx) => (
+                <button
+                  key={img.id}
                   className={`hero-carousel-indicator ${idx === activeImage ? 'active' : ''}`}
                   onClick={() => setActiveImage(idx)}
                   aria-label={`Ir a imagen ${idx + 1}`}
@@ -154,25 +120,29 @@ const Home = () => {
               ))}
             </div>
           </div>
+
         </div>
       </section>
 
-      {/* Alianzas Section */}
+      {/* ── Alianzas ──────────────────────────── */}
       <section className="alianzas">
         <div className="alianzas-container">
-          <h2 className="alianzas-title">Alianzas LEAD</h2>
-          <p className="alianzas-subtitle">
-            Impulsamos el futuro con el apoyo de líderes en tecnología y educación
+
+          <h2 className="alianzas-title sr">
+            {alianzasSectionContent.title}
+          </h2>
+          <p className="alianzas-subtitle sr sr-d1">
+            {alianzasSectionContent.subtitle}
           </p>
-          <div className="alianzas-marquee">
+
+          <div className="alianzas-marquee sr sr-d2">
             <div className="alianzas-track">
-              {/* Primera copia de logos */}
               {alianzasData.map((alianza) => (
                 <div key={alianza.id} className="alianza-item">
                   <img src={alianza.logo} alt={alianza.name} />
                 </div>
               ))}
-              {/* Segunda copia para efecto infinito */}
+              {/* Segunda copia para loop infinito */}
               {alianzasData.map((alianza) => (
                 <div key={`dup-${alianza.id}`} className="alianza-item">
                   <img src={alianza.logo} alt={alianza.name} />
@@ -180,41 +150,48 @@ const Home = () => {
               ))}
             </div>
           </div>
+
         </div>
       </section>
 
-      {/* Pilares Section */}
+      {/* ── Pilares ───────────────────────────── */}
       <section className="pilares">
         <div className="pilares-container">
-          <h2 className="pilares-title">Pilares LEAD</h2>
-          <p className="pilares-subtitle">
-            Nuestra organización que hace posible nuevas oportunidades
+
+          <h2 className="pilares-title sr">
+            {pilaresSectionContent.title}
+          </h2>
+          <p className="pilares-subtitle sr sr-d1">
+            {pilaresSectionContent.subtitle}
           </p>
-          
+
           <div className="pilares-carousel-wrapper">
             {canScrollLeft && (
-              <button 
+              <button
                 className="carousel-btn carousel-btn-left"
                 onClick={() => scrollCarousel('left')}
                 aria-label="Ver pilares anteriores"
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polyline points="15 18 9 12 15 6"></polyline>
+                  <polyline points="15 18 9 12 15 6" />
                 </svg>
               </button>
             )}
-            
-            <div 
-              className="pilares-carousel" 
+
+            <div
+              className="pilares-carousel sr sr-d2"
               ref={carouselRef}
               onScroll={checkScrollButtons}
             >
-              {pilaresData.map((pilar) => (
-                <div key={pilar.id} className="pilar-card">
-                  <div 
+              {pilaresData.map((pilar, idx) => (
+                <div
+                  key={pilar.id}
+                  className={`pilar-card sr sr-d${Math.min(idx + 1, 6)}`}
+                >
+                  <div
                     className="pilar-image"
                     style={{
-                      background: `linear-gradient(to bottom, ${pilar.gradientFrom}, ${pilar.gradientTo})`
+                      background: `linear-gradient(to bottom, ${pilar.gradientFrom}, ${pilar.gradientTo})`,
                     }}
                   >
                     <img src={pilar.image} alt={pilar.title} />
@@ -226,21 +203,23 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            
+
             {canScrollRight && (
-              <button 
+              <button
                 className="carousel-btn carousel-btn-right"
                 onClick={() => scrollCarousel('right')}
                 aria-label="Ver más pilares"
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polyline points="9 18 15 12 9 6"></polyline>
+                  <polyline points="9 18 15 12 9 6" />
                 </svg>
               </button>
             )}
           </div>
+
         </div>
       </section>
+
     </main>
   );
 };

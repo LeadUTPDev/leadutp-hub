@@ -1,0 +1,11 @@
+.pillar-page {
+  padding: var(--spacing-4xl) 0;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.professional-development .pillar-title {
+  color: #d93340; /* Color específico del pilar */
+}

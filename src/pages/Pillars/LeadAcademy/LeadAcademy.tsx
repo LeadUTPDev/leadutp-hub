@@ -9,7 +9,7 @@ const LeadAcademy = () => {
           <p className="pillar-description">
             Difundimos conocimiento y pasión por la tecnología con los jóvenes de colegio.
           </p>
-          {/* Aquí irá el contenido específico de este pilar en el futuro */}
+          {/* Aquí irá el contenido específico de este pilar en el futuro. */}
         </div>
       </section>
     </main>

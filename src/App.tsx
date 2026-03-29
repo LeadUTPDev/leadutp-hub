@@ -13,6 +13,7 @@ import FemaleExcellence from './pages/Pillars/FemaleExcellence';
 import ChapterDevelopment from './pages/Pillars/ChapterDevelopment';
 import AcademicExcellence from './pages/Pillars/AcademicExcellence';
 import LeadAcademy from './pages/Pillars/LeadAcademy';
+import AcademicSessions from './pages/Pillars/AcademicExcellence/programs/academic-sessions';
 
 function App() {
   return (
@@ -31,6 +32,10 @@ function App() {
           <Route path="/pillars/female-excellence" element={<FemaleExcellence />} />
           <Route path="/pillars/chapter-development" element={<ChapterDevelopment />} />
           <Route path="/pillars/academic-excellence" element={<AcademicExcellence />} />
+          <Route 
+            path="/pillars/academic-excellence/programs/academic-sessions" 
+            element={<AcademicSessions />} 
+          />
           <Route path="/pillars/lead-academy" element={<LeadAcademy />} />
         </Routes>
         <Footer />

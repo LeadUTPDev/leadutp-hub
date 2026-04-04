@@ -15,6 +15,8 @@ export interface Session {
   instructor: Instructor;
 }
 
+export type ProjectStatus = 'activo' | 'próximo' | 'finalizado';
+
 export interface Project {
   id: string;
   title: string;
@@ -27,4 +29,6 @@ export interface Project {
   scheduleTitle: string;
   highlights: string[];
   sessions: Session[];
+  year: number;
+  status: ProjectStatus;
 }

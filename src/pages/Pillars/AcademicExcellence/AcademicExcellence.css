@@ -353,8 +353,11 @@
    ============================================ */
 .ae-leadership {
   position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
   z-index: 1;
   padding: var(--spacing-4xl) 0 var(--spacing-xl);
+  padding-inline: 16px;
 }
 
 .ae-leadership h2 {
@@ -438,6 +441,7 @@
   position: relative;
   z-index: 1;
   padding: var(--spacing-xl) 0 var(--spacing-4xl);
+  padding-inline: 16px;
 }
 
 .ae-about-grid {
@@ -516,6 +520,11 @@
   gap: var(--spacing-sm);
   box-shadow: 0 8px 24px rgba(183, 69, 21, 0.3);
 }
+
+.ae-float-badge span {
+  white-space: nowrap;
+}
+
 
 .ae-about-content h2 {
   font-size: clamp(var(--font-size-3xl), 3vw, var(--font-size-4xl));
@@ -656,7 +665,7 @@
 .ae-audience {
   position: relative;
   z-index: 1;
-  padding: var(--spacing-4xl) 0;
+  padding: var(--spacing-4xl) 16px;
 }
 
 .ae-audience-grid {
@@ -1042,20 +1051,382 @@
 /* ============================================
    RESPONSIVE
    ============================================ */
+
+/* ── 1100px: tablet landscape / small laptop ── */
 @media (max-width: 1100px) {
-  .ae-prog-grid     { grid-template-columns: repeat(2, 1fr); }
-  .ae-hero-headline { grid-template-columns: 1fr; gap: var(--spacing-xl); }
-  .ae-about-grid    { grid-template-columns: 1fr; }
-  .ae-audience-grid { grid-template-columns: 1fr; gap: var(--spacing-xl); }
-  .ae-impact-grid   { grid-template-columns: repeat(2, 1fr); }
+  /* Hero */
+  .ae-hero-headline {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .ae-about {
+    padding-inline: 16px;
+  }
+
+  /* About */
+  .ae-about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ae-image-block {
+    max-width: 460px;
+    margin: 0 auto;
+  }
+
+  /* Audience */
+  .ae-audience-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  /* Programs */
+  .ae-prog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Impact */
+  .ae-impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
+/* ── 768px: tablet portrait ────────────────── */
 @media (max-width: 768px) {
-  .ae-hero          { padding: var(--spacing-4xl) 0 var(--spacing-2xl); }
-  .ae-hero-metrics  { flex-direction: column; gap: var(--spacing-md); }
-  .ae-metric-item   { max-width: none; }
-  .ae-prog-grid     { grid-template-columns: 1fr; }
-  .ae-impact-grid   { grid-template-columns: 1fr; }
-  .ae-leaders-row   { flex-direction: column; }
-  .ae-leader        { min-width: unset; max-width: none; }
+  /* Hero */
+  .ae-hero {
+    min-height: auto;
+    padding: var(--spacing-5xl) 0 var(--spacing-3xl);
+  }
+
+  .ae-hero-headline h1 {
+    font-size: clamp(2.6rem, 9vw, 3.2rem);
+  }
+
+  .ae-hero-desc {
+    font-size: var(--font-size-sm);
+  }
+
+  .ae-hero-metrics {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-2xl);
+  }
+
+  .ae-metric-item {
+    max-width: none;
+  }
+
+  .ae-metric-value {
+    font-size: var(--font-size-3xl);
+  }
+
+  /* Scroll cue */
+  .ae-scroll-cue {
+    display: none;
+  }
+
+  /* Leadership */
+  .ae-leadership {
+    padding: var(--spacing-3xl) 0 var(--spacing-xl);
+    padding-inline: 16px;
+  }
+
+  .ae-leadership h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .ae-leaders-row {
+    flex-direction: column;
+  }
+
+  .ae-leader {
+    min-width: unset;
+    max-width: none;
+  }
+
+  /* About */
+  .ae-about {
+    padding: var(--spacing-xl) 0 var(--spacing-3xl);
+    padding-inline: 16px;
+  }
+
+  .ae-about-grid {
+    gap: var(--spacing-2xl);
+  }
+
+  .ae-image-block {
+    max-width: 100%;
+  }
+
+  .ae-img-placeholder {
+    aspect-ratio: 16/9;
+  }
+
+  .ae-float-badge {
+    display: none;
+    bottom: -12px;
+    right: -8px;
+  }
+
+  /* Objective */
+  .ae-objective {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .ae-obj-quote {
+    font-size: clamp(var(--font-size-xl), 3.5vw, var(--font-size-2xl));
+  }
+
+  .ae-obj-targets {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .ae-obj-target-item {
+    width: 100%;
+  }
+
+  /* Audience */
+  .ae-audience {
+    padding: var(--spacing-3xl) 16px;
+  }
+
+  /* Programs */
+  .ae-programs {
+    padding: var(--spacing-3xl) 8px;
+  }
+
+  .ae-programs-header {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .ae-programs-header h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .ae-prog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Impact */
+  .ae-impact {
+    padding: var(--spacing-3xl) 16px;
+  }
+
+  .ae-impact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* CTA */
+  .ae-cta {
+    padding: var(--spacing-4xl) 0;
+  }
+
+  .ae-cta-inner h2 {
+    font-size: clamp(var(--font-size-3xl), 7vw, var(--font-size-4xl));
+  }
+
+  .ae-cta-inner p {
+    font-size: var(--font-size-base);
+  }
+
+  /* Buttons */
+  .ae-hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ae-btn-primary,
+  .ae-btn-ghost {
+    width: 100%;
+    justify-content: center;
+  }
 }
+
+/* ── 480px: mobile ─────────────────────────── */
+@media (max-width: 480px) {
+  /* Hero */
+  .ae-hero {
+    padding: var(--spacing-4xl) 0 var(--spacing-2xl);
+  }
+
+  .ae-hero-headline h1 {
+    font-size: clamp(2rem, 10vw, 2.6rem);
+  }
+
+  .ae-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    padding: 5px 10px;
+  }
+
+  .ae-hero-metrics {
+    margin-top: var(--spacing-xl);
+  }
+
+  .ae-metric-item {
+    padding: var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .ae-metric-value {
+    font-size: var(--font-size-2xl);
+  }
+
+  .ae-metric-label {
+    font-size: var(--font-size-xs);
+  }
+
+  .ae-metric-sub {
+    font-size: 10px;
+  }
+
+  /* Leadership */
+  .ae-leadership h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .ae-leader {
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+
+  .ae-leader-avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .ae-leader-initials {
+    font-size: var(--font-size-base);
+  }
+
+  .ae-leader-info h4 {
+    font-size: var(--font-size-base);
+  }
+
+  /* About */
+  .ae-about-content h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .ae-about-content p {
+    font-size: var(--font-size-sm);
+  }
+
+  .ae-principle-pill {
+    font-size: var(--font-size-xs);
+    padding: 6px var(--spacing-sm);
+  }
+
+  .ae-float-badge {
+    font-size: 8px;
+    display: none;
+    padding: 8px var(--spacing-sm);
+    bottom: -10px;
+    right: 0;
+  }
+
+  /* Objective */
+  .ae-obj-quote {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .ae-obj-label {
+    font-size: 10px;
+  }
+
+  /* Audience */
+  .ae-audience-text h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .ae-audience-card {
+    padding: var(--spacing-lg);
+  }
+
+  .ae-audience-card h4 {
+    font-size: var(--font-size-base);
+  }
+
+  .ae-aud-num {
+    font-size: var(--font-size-xl);
+  }
+
+  /* Programs */
+  .ae-programs-header h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .ae-prog-card {
+    padding: var(--spacing-lg);
+    gap: var(--spacing-md);
+  }
+
+  .ae-prog-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .ae-prog-body h3 {
+    font-size: var(--font-size-base);
+  }
+
+  /* Impact */
+  .ae-impact-header h2,
+  .ae-leadership h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .ae-impact-card {
+    padding: var(--spacing-lg);
+  }
+
+  .ae-impact-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .ae-impact-area-label {
+    font-size: var(--font-size-base);
+  }
+
+  /* CTA */
+  .ae-cta {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .ae-cta-inner h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .ae-cta-inner p {
+    font-size: var(--font-size-sm);
+  }
+
+  .ae-btn-primary.ae-btn-large {
+    font-size: var(--font-size-sm);
+    padding: 14px var(--spacing-xl);
+  }
+}
+
+/* ── 360px: very small phones ──────────────── */
+@media (max-width: 360px) {
+  .ae-hero-headline h1 {
+    font-size: 1.9rem;
+  }
+
+  .ae-metric-value {
+    font-size: var(--font-size-xl);
+  }
+
+  .ae-obj-quote {
+    font-size: var(--font-size-lg);
+  }
+
+  .ae-cta-inner h2 {
+    font-size: var(--font-size-xl);
+  }
+}
+

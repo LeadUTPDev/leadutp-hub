@@ -341,7 +341,7 @@ const AcademicExcellence = () => {
       {/* === IMPACT === */}
       <section className="ae-impact container">
         <motion.div className="ae-impact-header" {...fadeUp}>
-          <span className="ae-section-tag">Impacto esperado</span>
+          <span className="ae-section-tag">Impacto</span>
           <h2>Lo que cambia cuando entras.</h2>
         </motion.div>
 

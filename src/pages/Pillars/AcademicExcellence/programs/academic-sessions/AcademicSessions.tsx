@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   BookOpen, 
@@ -13,13 +13,26 @@ import {
   Sparkles,
   GraduationCap,
   CheckCircle2,
-  MapPin
+  MapPin,
+  Search,
+  X,
+  Filter,
+  ChevronDown as ChevronDownSmall,
 } from 'lucide-react';
 import './AcademicSessions.css';
-import type { Session } from './academic-sessions.type';
+import type { Session, ProjectStatus } from './academic-sessions.type';
 import { projectsData } from './academic-sessions.data';
 
-// --- SUBCOMPONENTE PARA LAS SESIONES EXPANDIBLES ---
+// ── AÑOS DISPONIBLES ─────────────────────────────────────────────────────────
+const availableYears = [...new Set(projectsData.map(p => p.year))].sort((a, b) => b - a);
+
+const STATUS_LABELS: Record<ProjectStatus, string> = {
+  activo: 'Activo',
+  próximo: 'Próximo',
+  finalizado: 'Finalizado',
+};
+
+// ── SUBCOMPONENTE SessionItem ─────────────────────────────────────────────────
 const SessionItem = ({ session, index }: { session: Session; index: number }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -86,14 +99,46 @@ const SessionItem = ({ session, index }: { session: Session; index: number }) =>
   );
 };
 
-// --- COMPONENTE PRINCIPAL ---
+// ── COMPONENTE PRINCIPAL ──────────────────────────────────────────────────────
 const AcademicSessions = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const [activeProjectId, setActiveProjectId] = useState(projectsData[0].id);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterYear, setFilterYear] = useState<number | null>(null);
+  const [filterStatus, setFilterStatus] = useState<ProjectStatus | null>(null);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  // ── Filtrado reactivo ──────────────────────────────────────────────────────
+  const filteredProjects = useMemo(() => {
+    return projectsData.filter(p => {
+      const matchSearch = searchQuery.trim() === '' || 
+        p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.description.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchYear = filterYear === null || p.year === filterYear;
+      const matchStatus = filterStatus === null || p.status === filterStatus;
+      return matchSearch && matchYear && matchStatus;
+    });
+  }, [searchQuery, filterYear, filterStatus]);
+
+  // Si el proyecto activo ya no está en resultados, selecciona el primero visible
+  useEffect(() => {
+    if (filteredProjects.length > 0 && !filteredProjects.find(p => p.id === activeProjectId)) {
+      setActiveProjectId(filteredProjects[0].id);
+    }
+  }, [filteredProjects, activeProjectId]);
+
   const activeProject = projectsData.find(p => p.id === activeProjectId) || projectsData[0];
+
+  const hasActiveFilters = filterYear !== null || filterStatus !== null;
+
+  const clearFilters = () => {
+    setFilterYear(null);
+    setFilterStatus(null);
+    setSearchQuery('');
+  };
 
   return (
     <motion.main
@@ -141,33 +186,136 @@ const AcademicSessions = () => {
             <Sparkles size={14} />
           </div>
 
+          {/* Search + Filter bar */}
+          <div className="sidebar-search-area">
+            {/* Search Input */}
+            <div className="search-input-wrapper">
+              <Search size={15} className="search-icon" />
+              <input
+                type="text"
+                className="search-input"
+                placeholder="Buscar proyecto..."
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)}
+              />
+              {searchQuery && (
+                <button className="search-clear" onClick={() => setSearchQuery('')} aria-label="Limpiar búsqueda">
+                  <X size={13} />
+                </button>
+              )}
+            </div>
+
+            {/* Filter toggle button */}
+            <button 
+              className={`filter-toggle-btn ${isFilterOpen ? 'is-open' : ''} ${hasActiveFilters ? 'has-filters' : ''}`}
+              onClick={() => setIsFilterOpen(v => !v)}
+              aria-label="Abrir filtros"
+            >
+              <Filter size={14} />
+              {hasActiveFilters && <span className="filter-badge" />}
+              <ChevronDownSmall size={13} className="filter-chevron" />
+            </button>
+          </div>
+
+          {/* Filter Panel (collapsible) */}
+          <AnimatePresence>
+            {isFilterOpen && (
+              <motion.div
+                className="filter-panel"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25, ease: 'easeInOut' }}
+              >
+                <div className="filter-panel-inner">
+                  {/* Year filter */}
+                  <div className="filter-group">
+                    <span className="filter-group-label">Año</span>
+                    <div className="filter-chips">
+                      <button
+                        className={`filter-chip ${filterYear === null ? 'is-active' : ''}`}
+                        onClick={() => setFilterYear(null)}
+                      >Todos</button>
+                      {availableYears.map(year => (
+                        <button
+                          key={year}
+                          className={`filter-chip ${filterYear === year ? 'is-active' : ''}`}
+                          onClick={() => setFilterYear(year)}
+                        >{year}</button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Status filter */}
+                  <div className="filter-group">
+                    <span className="filter-group-label">Estado</span>
+                    <div className="filter-chips">
+                      <button
+                        className={`filter-chip ${filterStatus === null ? 'is-active' : ''}`}
+                        onClick={() => setFilterStatus(null)}
+                      >Todos</button>
+                      {(Object.keys(STATUS_LABELS) as ProjectStatus[]).map(s => (
+                        <button
+                          key={s}
+                          className={`filter-chip filter-chip-${s} ${filterStatus === s ? 'is-active' : ''}`}
+                          onClick={() => setFilterStatus(s)}
+                        >{STATUS_LABELS[s]}</button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {hasActiveFilters && (
+                    <button className="clear-filters-btn" onClick={clearFilters}>
+                      <X size={12} /> Limpiar filtros
+                    </button>
+                  )}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           {/* Project Navigation */}
           <nav className="project-nav">
-            <span className="nav-label">Descubre nuestros Proyectos</span>
-            <div className="nav-items">
-              {projectsData.map((project) => (
-                <button
-                  key={project.id}
-                  className={`nav-item ${activeProjectId === project.id ? 'is-active' : ''}`}
-                  onClick={() => setActiveProjectId(project.id)}
-                >
-                  <div className="nav-item-icon">
-                    <FolderDot size={18} />
-                  </div>
-                  <div className="nav-item-content">
-                    <span className="nav-item-title">{project.title}</span>
-                    <span className="nav-item-sessions">{project.sessions.length} sesiones</span>
-                  </div>
-                  {activeProjectId === project.id && (
-                    <motion.div 
-                      layoutId="nav-indicator" 
-                      className="nav-indicator"
-                      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                    />
-                  )}
-                </button>
-              ))}
+            <div className="nav-label-row">
+              <span className="nav-label">Proyectos</span>
+              <span className="nav-count">{filteredProjects.length}</span>
             </div>
+
+            {filteredProjects.length === 0 ? (
+              <div className="nav-empty">
+                <Search size={24} />
+                <span>Sin resultados</span>
+                <button className="clear-filters-btn" onClick={clearFilters}>Limpiar filtros</button>
+              </div>
+            ) : (
+              <div className="nav-items">
+                {filteredProjects.map((project) => (
+                  <button
+                    key={project.id}
+                    className={`nav-item ${activeProjectId === project.id ? 'is-active' : ''}`}
+                    onClick={() => setActiveProjectId(project.id)}
+                  >
+                    <div className="nav-item-icon">
+                      <FolderDot size={18} />
+                    </div>
+                    <div className="nav-item-content">
+                      <span className="nav-item-title">{project.title}</span>
+                      <span className="nav-item-sessions">{project.sessions.length} sesiones</span>
+                    </div>
+                    <span className={`nav-item-status status-${project.status}`}>
+                      {STATUS_LABELS[project.status]}
+                    </span>
+                    {activeProjectId === project.id && (
+                      <motion.div 
+                        layoutId="nav-indicator" 
+                        className="nav-indicator"
+                        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
           </nav>
 
           {/* Stats Mini */}
@@ -203,6 +351,9 @@ const AcademicSessions = () => {
                     </span>
                     <span className="badge badge-secondary">
                       <MapPin size={12} /> {activeProject.modality}
+                    </span>
+                    <span className={`badge badge-status status-badge-${activeProject.status}`}>
+                      {STATUS_LABELS[activeProject.status]}
                     </span>
                   </div>
                   <h2 className="project-title">{activeProject.title}</h2>
